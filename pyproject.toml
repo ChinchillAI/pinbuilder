@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "pinbuilder"
+version = "0.0.1"
+description = ""
+authors = ["ChinchillAI <chinchillaidev@gmail.com>"]
+readme = "README.md"
+packages = [{include = "pinbuilder"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+numpy = "^2.1.0"
+typer = "^0.12.5"
+
+[tool.poetry.scripts]
+pb = "pinbuilder.cli:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
