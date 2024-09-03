@@ -84,7 +84,9 @@ class BezierPath:
         """Returns the number of samples needed for each segment of the bezier path to achieve a given error distance."""
         return np.array([bezier.fit(threshold) for bezier in self.beziers])
 
-    def bezier_lengths(self, samples: int | list[int]) -> npt.NDArray[np.float64]:
+    def bezier_lengths(
+        self, samples: int | list[int] | npt.NDArray[np.int64]
+    ) -> npt.NDArray[np.float64]:
         """Returns the path length for each segment in the bezier path at the given number of samples."""
         if isinstance(samples, int):
             return np.array([beizer.path(samples).length for beizer in self.beziers])
@@ -94,7 +96,7 @@ class BezierPath:
             [self.beziers[i].path(samples[i]).length for i in range(len(samples))]
         )
 
-    def length(self, samples: int | list[int]) -> float:
+    def length(self, samples: int | list[int] | npt.NDArray[np.int64]) -> float:
         """Returns the total length of this path at the given number of samples."""
         return sum(self.bezier_lengths(samples))
 

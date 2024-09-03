@@ -2,4 +2,6 @@ from .base import Feature
 
 
 class RampHeight(Feature):
-    pass
+    @property
+    def id(self):
+        return self.labels[0]

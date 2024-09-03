@@ -1,14 +1,22 @@
 import typer
 from pathlib import Path
 from subprocess import run
-from .svg.parser import parse
+from .game import Game
 
 app = typer.Typer()
 
 
 @app.command()
 def list(path: Path):
-    print(parse(path))
+    _ = Game(path)
+
+
+@app.command()
+def generate(path: Path, out: Path | None = None):
+    if out is None:
+        out = Path("output")
+
+    Game(path).generate(out)
 
 
 @app.command()

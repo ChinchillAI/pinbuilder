@@ -22,7 +22,7 @@ class Bezier:
         b = (a[1:] - a[:-1]) * u + a[:-1]
         return Path(((b[1] - b[0]) * u + b[0])[0])  # pyright: ignore[reportAny]
 
-    def fit(self, threshold: float = 1e-2) -> int:
+    def fit(self, threshold: float = 1e-1) -> int:
         """Returns the number of samples needed to acheive the given error rate for this bezier."""
 
         def estimator(samples: int = 8, last_length: float | None = None) -> int:
